@@ -1,0 +1,30 @@
+{
+  "name": "sass-import-compiler",
+  "version": "0.0.1",
+  "description": "accepts an array of scss files and writes them to @imports for a main scss file",
+  "repository": "https://github.com/whayler1/sass-import-compiler",
+  "author": {
+    "name": "Justin Worsdale",
+    "email": "jstn@jstn.name",
+    "url": "jstn.name"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-nodeunit": "~0.3.0",
+    "grunt": "~0.4.2",
+    "jshint-stylish": "~0.1.5",
+    "load-grunt-tasks": "~0.3.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  }
+}
