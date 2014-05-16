@@ -29,33 +29,39 @@ exports.sass_import_compiler = {
 	},
 	dist: function(test) {
 		
-		test.expect(2);
-		
 		var output = grunt.file.read('tmp/tmp.scss'),
 			spl = output.split('\n'),
 			match,
-			matchHasPath = true,
+			matchHasPath,
 			errorPath;
 		
-		test.ok(spl.length > 0, 'should be importing at least one file');
+		//test.expect(spl.length * 2);
 		
-		//grunt.file.setBase('tmp');
+		grunt.file.setBase('tmp');
 		
 		spl.forEach(function(filepath) {
 			
 			match = filepath.match(/ (.*);/);
+			matchHasPath = match instanceof Array && match.length > 1;
 			
+			test.ok(matchHasPath, 'import not properly formed: ' + filepath);
+			
+			test.ok(grunt.file.isFile(match[1] + '.scss'), 'file does not exist: ' + filepath);
+			
+			/*
 			if(match instanceof Array && match.length > 1) {
 				
-				console.log(match);
+				console.log(grunt.file.isFile(match[1] + '.scss') );
 			}else {
 				
-				matchHasPath = false;
+				//test.ok(false, 'import not properly formed: ' + filepath);
+				//matchHasPath = false;
 				errorPath = filepath;
 			}
+			*/
 		});
 		
-		test.ok(matchHasPath, 'paths should be properly formed: ' + errorPath);
+		//test.ok(matchHasPath, 'paths should be properly formed: ' + errorPath);
 		
 		
 		test.done();
