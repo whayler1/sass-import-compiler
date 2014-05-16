@@ -28,14 +28,26 @@ module.exports = function (grunt) {
 			
 			var fileContents = '',
 				dest = fileobj.dest,
-				destpath = path.dirname(dest);
+				src = fileobj.src,
+				destpath = path.dirname(dest),
+				i = 0;
 			
+			for(; i < src.length; i++) {
+				
+				if(i > 0) {
+					fileContents += '\n';
+				}
+				
+				fileContents += '@import ' + path.relative(destpath, src[i]).replace(/\.scss/, '') + ';';
+			}
+			
+			/*
 			fileobj.src.forEach(function(filename) {
 				
 				fileContents += '@import ' + path.relative(destpath, filename).replace(/\.scss/, '') + ';\n';
 			});
-			
-			grunt.log.writeln(fileContents);
+			*/
+			//grunt.log.writeln(fileContents);
 			
 			grunt.file.write(fileobj.dest, fileContents);
 		});

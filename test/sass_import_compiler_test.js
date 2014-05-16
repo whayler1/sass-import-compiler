@@ -29,32 +29,35 @@ exports.sass_import_compiler = {
 	},
 	dist: function(test) {
 		
-		test.expect(1);
+		test.expect(2);
 		
-		var output = grunt.file.read('tmp/tmp.scss');
+		var output = grunt.file.read('tmp/tmp.scss'),
+			spl = output.split('\n'),
+			match,
+			matchHasPath = true,
+			errorPath;
 		
-		test.ok(typeof output === 'string', 'should be a string');
+		test.ok(spl.length > 0, 'should be importing at least one file');
+		
+		//grunt.file.setBase('tmp');
+		
+		spl.forEach(function(filepath) {
+			
+			match = filepath.match(/ (.*);/);
+			
+			if(match instanceof Array && match.length > 1) {
+				
+				console.log(match);
+			}else {
+				
+				matchHasPath = false;
+				errorPath = filepath;
+			}
+		});
+		
+		test.ok(matchHasPath, 'paths should be properly formed: ' + errorPath);
+		
 		
 		test.done();
 	}
-	/*
-	default_options: function (test) {
-		test.expect(1);
-
-		var actual = grunt.file.read('tmp/default_options');
-		var expected = grunt.file.read('test/expected/default_options');
-		test.equal(actual, expected, 'should describe what the default behavior is.');
-
-		test.done();
-	},
-	custom_options: function (test) {
-		test.expect(1);
-
-		var actual = grunt.file.read('tmp/custom_options');
-		var expected = grunt.file.read('test/expected/custom_options');
-		test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
-		test.done();
-	}
-	*/
 };
