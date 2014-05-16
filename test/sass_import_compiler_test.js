@@ -47,18 +47,6 @@ exports.sass_import_compiler = {
 			test.ok(matchHasPath, 'import not properly formed: ' + filepath);
 			
 			test.ok(grunt.file.isFile(match[1] + '.scss'), 'file does not exist: ' + filepath);
-			
-			/*
-			if(match instanceof Array && match.length > 1) {
-				
-				console.log(grunt.file.isFile(match[1] + '.scss') );
-			}else {
-				
-				//test.ok(false, 'import not properly formed: ' + filepath);
-				//matchHasPath = false;
-				errorPath = filepath;
-			}
-			*/
 		});
 		
 		//test.ok(matchHasPath, 'paths should be properly formed: ' + errorPath);
