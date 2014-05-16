@@ -38,7 +38,7 @@ module.exports = function (grunt) {
 					fileContents += '\n';
 				}
 				
-				fileContents += '@import ' + path.relative(destpath, src[i]).replace(/\.scss/, '') + ';';
+				fileContents += '@import \'' + path.relative(destpath, src[i]).replace(/\.scss/, '') + '\';';
 			}
 			
 			/*
