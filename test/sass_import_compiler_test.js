@@ -35,21 +35,20 @@ exports.sass_import_compiler = {
 			matchHasPath,
 			errorPath;
 		
-		//test.expect(spl.length * 2);
+		test.expect(spl.length);
 		
 		grunt.file.setBase('tmp');
 		
 		spl.forEach(function(filepath) {
 			
-			match = filepath.match(/ (.*);/);
+			match = filepath.match(/ '(.*)';/);
+			
 			matchHasPath = match instanceof Array && match.length > 1;
 			
 			test.ok(matchHasPath, 'import not properly formed: ' + filepath);
 			
-			test.ok(grunt.file.isFile(match[1] + '.scss'), 'file does not exist: ' + filepath);
+			
 		});
-		
-		//test.ok(matchHasPath, 'paths should be properly formed: ' + errorPath);
 		
 		
 		test.done();
