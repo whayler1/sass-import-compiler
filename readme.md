@@ -1,6 +1,6 @@
 # sass import compiler
 
-> This plugin is for developers who use the [watch](https://github.com/gruntjs/grunt-contrib-watch) contrib to compile their scss on file updates. It allows you to manage your main scss file @import's in a config array in your gruntfile. This way you do not have to do the duplicitive work of managing an array of scss files to watch and updating a list of files to import in your primary scss file.
+> This plugin is for developers who use the [watch](https://github.com/gruntjs/grunt-contrib-watch) contrib to compile their [scss](https://github.com/gruntjs/grunt-contrib-sass) on file updates. It allows you to manage your main scss file @import's in a config array in your gruntfile. This way you do not have to do the duplicitive work of managing an array of scss files to watch and updating a list of files to import in your primary scss file.
 
 ## Getting Started
 This plugin requires Grunt.
@@ -38,7 +38,7 @@ So far there are no options for this plugin.
 
 ### Usage Examples
 
-#### Simple usage
+#### Basic Setup
 In this example, src/main.scss will be written to contain the three files below as @import partials.
 
 ```js
@@ -46,15 +46,64 @@ grunt.initConfig({
   sass_import_compiler: {
     files: {
       'src/main.scss': ['src/vars.scss', 'src/mixins.scss', 'src/header.scss'],
-    },
-  },
+    }
+  }
 })
 ```
-For this configuration, the contents of src/main.scss will read as
+For this configuration, the contents of src/main.scss will be:
+
 ```scss
 @import 'src/vars';
 @import 'src/mixins';
 @import 'src/header';
+```
+
+#### With Watch
+
+I created this plugin with the idea of using it in tandem with the grunt watch contrib. The thought being that you maintain your scss dependencies in an array outside the grunt config, and then only have to maintain them in one place. You use watch to compile on any file updates and you use watch to monitor any change to your configuration and re-compile your scss @import list on your main file.
+
+First you would have to manage your scss dependencies in a seperate array. This could be before your grunt.initConfig in gruntfile.js or in a seperate config file you require.
+
+```js
+var scss_dependencies = [
+		'src/vars.scss',
+		'src/mixins.scss',
+		'src/header.scss'
+	];
+```
+
+Then set up your grunt config so the sass plugin compiles from your sass_import_compiler destination file. Set up watch to run the sass task to any update to a file in scss_dependencies, and to run the sass_import_comiler task whenever the file containing scss_dependencies updates (in this case we'll assume it's managed in gruntfile.js).
+
+```js
+grunt.initConfig({
+  sass_import_compiler: {
+    files: {
+      'src/main.scss', scss_dependencies
+    }
+  },
+  sass: {
+  	files: {
+  	  'dist/main.scss': 'src/main.scss'
+  	}
+  },
+  watch: {
+    gruntfile: {
+      options: {
+        reload: true,
+        atBegin: 'sass_import_compiler'
+      },
+      files: [
+        'gruntfile.js'
+      ]
+    },
+    sass: {
+    	files: scss_dependencies,
+    	tasks: [
+    		'sass'
+    	]
+    }
+  }
+})
 ```
 
 ## License
