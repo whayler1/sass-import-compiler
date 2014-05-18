@@ -39,7 +39,8 @@ module.exports = function (grunt) {
 					'tmp/tmp.scss': [
 						'test/scss/first.scss',
 						'test/scss/second.scss',
-						'test/scss/third.scss'
+						'test/scss/third.scss',
+						'test/scss/fourth.scss'
 					]
 				}
 			}

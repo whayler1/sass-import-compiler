@@ -31,11 +31,15 @@ exports.sass_import_compiler = {
 		
 		var output = grunt.file.read('tmp/tmp.scss'),
 			spl = output.split('\n'),
+			filearray = grunt.config.get('sass_import_compiler').dist.files['tmp/tmp.scss'],
 			match,
 			matchHasPath,
 			errorPath;
+			
+		test.expect((spl.length * 2) + 1);
 		
-		test.expect(spl.length);
+		test.equal(filearray.length, spl.length,
+				'file array length should match number of @imports in output file');
 		
 		grunt.file.setBase('tmp');
 		
@@ -47,7 +51,10 @@ exports.sass_import_compiler = {
 			
 			test.ok(matchHasPath, 'import not properly formed: ' + filepath);
 			
+			// only reference match[1] if matchHasPath is true
 			
+			test.ok(matchHasPath && grunt.file.isFile(match[1] + '.scss'),
+					'file path should point to file realtive to output file location.');
 		});
 		
 		
