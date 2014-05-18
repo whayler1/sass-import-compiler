@@ -38,18 +38,23 @@ So far there are no options for this plugin.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+#### Simple usage
+In this example, src/main.scss will be written to contain the three files below as @import partials.
 
 ```js
 grunt.initConfig({
   sass_import_compiler: {
-    options: {},
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'src/main.scss': ['src/vars.scss', 'src/mixins.scss', 'src/header.scss'],
     },
   },
 })
+```
+For this configuration, the contents of src/main.scss will read as
+```scss
+@import 'src/vars';
+@import 'src/mixins';
+@import 'src/header';
 ```
 
 ## License
