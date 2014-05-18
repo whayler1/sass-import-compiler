@@ -9,7 +9,10 @@
     "url": "jstn.name"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "sass",
+    "scss",
+    "watch"
   ],
   "main": "Gruntfile.js",
   "engines": {
