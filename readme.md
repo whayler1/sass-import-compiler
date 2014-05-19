@@ -79,7 +79,7 @@ grunt.initConfig({
   sass_import_compiler: {
   	src: {
   	  files: {
-        'src/main.scss', scss_dependencies
+        'src/main.scss': scss_dependencies
       }
   	}
   },
