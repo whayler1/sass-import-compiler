@@ -84,9 +84,11 @@ grunt.initConfig({
   	}
   },
   sass: {
-  	files: {
-  	  'dist/main.scss': 'src/main.scss'
-  	}
+    dist: {
+  	  files: {
+  	    'dist/main.scss': 'src/main.scss'
+  	  }
+    }
   },
   watch: {
     gruntfile: {
@@ -104,7 +106,7 @@ grunt.initConfig({
     sass: {
     	files: scss_dependencies,
     	tasks: [
-    		'sass'
+    		'sass:dist'
     	]
     }
   }
