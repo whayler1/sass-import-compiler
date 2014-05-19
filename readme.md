@@ -77,9 +77,11 @@ Then set up your grunt config so the sass plugin compiles from your sass_import_
 ```js
 grunt.initConfig({
   sass_import_compiler: {
-    files: {
-      'src/main.scss', scss_dependencies
-    }
+  	src: {
+  	  files: {
+        'src/main.scss', scss_dependencies
+      }
+  	}
   },
   sass: {
   	files: {
@@ -90,10 +92,13 @@ grunt.initConfig({
     gruntfile: {
       options: {
         reload: true,
-        atBegin: 'sass_import_compiler'
+        atBegin: true
       },
       files: [
         'gruntfile.js'
+      ],
+      tasks: [
+        'sass_import_compiler:src'
       ]
     },
     sass: {
