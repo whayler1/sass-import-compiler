@@ -14,7 +14,7 @@ And writes a file that looks like this:
 ```scss
 @import 'file-one';
 @import 'file-two';
-@impot 'file-three';
+@import 'file-three';
 ```
 ## Getting Started
 This plugin requires Grunt.
