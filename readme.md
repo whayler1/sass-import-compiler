@@ -10,7 +10,7 @@ At it's simplest this plugin takes an array of scss files like this:
 	'file-three.scss'
 ]
 ```
-And writes a file that looks like this:
+And writes an scss file that looks like this:
 ```scss
 @import 'file-one';
 @import 'file-two';
