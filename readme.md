@@ -1,19 +1,21 @@
 # sass import compiler
 
-> This plugin is for developers who use the [watch](https://github.com/gruntjs/grunt-contrib-watch) contrib to compile their [scss](https://github.com/gruntjs/grunt-contrib-sass) on file updates. It allows you to manage your main scss file @import's in a config array in your gruntfile. This way you do not have to do the duplicitive work of managing an array of scss files to watch and updating a list of files to import in your primary scss file.
+This plugin is for developers who use the [watch](https://github.com/gruntjs/grunt-contrib-watch) contrib to compile their [scss](https://github.com/gruntjs/grunt-contrib-sass) on file updates. It allows you to manage your main scss file @import's in a config array in your gruntfile. This way you do not have to do the duplicitive work of managing an array of scss files to watch and updating a list of files to import in your primary scss file.
 
 At it's simplest this plugin takes an array of scss files like this:
-	[
-		'file-one.scss',
-		'file-two.scss',
-		'file-three.scss'
-	]
-
+```js
+[
+	'file-one.scss',
+	'file-two.scss',
+	'file-three.scss'
+]
+```
 And writes a file that looks like this:
-	@import 'file-one';
-	@import 'file-two';
-	@impot 'file-three';
-
+```scss
+@import 'file-one';
+@import 'file-two';
+@impot 'file-three';
+```
 ## Getting Started
 This plugin requires Grunt.
 
