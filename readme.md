@@ -100,7 +100,8 @@ grunt.initConfig({
         'gruntfile.js'
       ],
       tasks: [
-        'sass_import_compiler:src'
+        'sass_import_compiler:src',
+        'sass:dist'
       ]
     },
     sass: {

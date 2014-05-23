@@ -1,6 +1,6 @@
 {
   "name": "sass-import-compiler",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "accepts an array of scss files and writes them to @imports for a main scss file",
   "repository": "https://github.com/whayler1/sass-import-compiler",
   "author": {
