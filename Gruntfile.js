@@ -35,6 +35,9 @@ module.exports = function (grunt) {
 		sass_import_compiler: {
 			
 			dist: {
+				options: {
+					//keepExtensions: true
+				},
 				files: {
 					'tmp/tmp.scss': [
 						'test/scss/first.scss',
