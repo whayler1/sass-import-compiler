@@ -21,8 +21,6 @@ module.exports = function (grunt) {
 			keepExtensions: false
 		});
 		
-		console.log('options', options);
-		
 		// Iterate over all specified file groups.
 		this.files.forEach(function (fileobj) {
 			
