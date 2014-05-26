@@ -48,7 +48,12 @@ grunt.initConfig({
 
 ### Options
 
-So far there are no options for this plugin.
+#### keepExtensions
+
+Type: `Boolean`
+Default: `false`
+
+If set to true `.scss` file extensions will not be removed from paths when writing them to them in the destination file.
 
 ### Usage Examples
 
